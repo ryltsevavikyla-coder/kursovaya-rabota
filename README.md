@@ -11,10 +11,10 @@
 ### Скриншоты:
 
 **1. Облачная сеть и подсети**  
-![VPC и подсети]()
+![VPC и подсети](https://github.com/ryltsevavikyla-coder/kursovaya-rabota/blob/main/Screenshot%202026-06-10%20142739.png)
 
 **2. Bastion Host**  
-![Bastion Host]()
+![Bastion Host](https://github.com/ryltsevavikyla-coder/kursovaya-rabota/blob/main/Screenshot%202026-06-10%20142926.png)
 
 ### Terraform outputs:
 ```bash
