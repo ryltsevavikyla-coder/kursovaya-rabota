@@ -24,3 +24,38 @@ bastion_public_ip = "93.77.191.182"
 ```
 Bashssh ubuntu@93.77.191.182
 ```
+# Сайт
+
+## Блок 2: Веб-сервера и Application Load Balancer
+
+### Что было сделано:
+- Созданы две виртуальные машины (`web-server-1` и `web-server-2`) в приватной подсети в разных зонах доступности.
+- На обе ВМ установлен веб-сервер **nginx**.
+- Настроен **Application Load Balancer** с распределением трафика.
+- Добавлен NAT Gateway для выхода ВМ в интернет.
+- Размещён статический сайт.
+
+### Результат:
+Сайт успешно работает через балансировщик по адресу:  
+**http://81.26.179.195**
+
+### Скриншоты:
+
+**1. Список виртуальных машин**
+![Список ВМ](https://github.com/ryltsevavikyla-coder/kursovaya-rabota/blob/main/Screenshot%202026-06-11%20144902.png)
+
+**2. web-server-1 (Overview)**
+![web-server-1](https://github.com/ryltsevavikyla-coder/kursovaya-rabota/blob/main/Screenshot%202026-06-11%20144928.png)
+
+**3. web-server-2 (Overview)**
+![web-server-2](https://github.com/ryltsevavikyla-coder/kursovaya-rabota/blob/main/Screenshot%202026-06-11%20144951.png)
+
+**4. Application Load Balancer**
+![Application Load Balancer](https://github.com/ryltsevavikyla-coder/kursovaya-rabota/blob/main/Screenshot%202026-06-11%20145019.png)
+
+**5. Сайт через балансировщик (Web Server 1)**
+![Сайт Web Server 1](https://github.com/ryltsevavikyla-coder/kursovaya-rabota/blob/main/Screenshot%202026-06-11%20150106.png)
+
+**6. Сайт через балансировщик (Web Server 2)**
+![Сайт Web Server 2](https://github.com/ryltsevavikyla-coder/kursovaya-rabota/blob/main/Screenshot%202026-06-11%20150110.png)
+
