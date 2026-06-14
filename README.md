@@ -113,7 +113,7 @@ Bashssh ubuntu@93.77.191.182
 - **Применено к дискам**: bastion-host, web-server-1, web-server-2, monitoring, elasticsearch
 
 ### Скриншоты:
-![1](Screenshot-daily-snapshot-7days.png)
+![1](https://github.com/ryltsevavikyla-coder/kursovaya-rabota/blob/main/Screenshot%202026-06-13%20171003.png)
 
 
 Расписание работает автоматически. Снимки создаются каждый день и хранятся 7 дней.
