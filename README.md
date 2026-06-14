@@ -76,6 +76,33 @@
 - Метрики HTTP пока не собираются из-за отсутствия нагрузки на сайт.
 
 
+## Блок 3: Сбор, хранение и анализ логов
+
+При выполнении этого блока у меня возникли серьёзные проблемы. Я очень много раз пыталась настроить Filebeat на виртуальных машинах web-server-1 и web-server-2 в Yandex Cloud. Пересоздавала ВМ, меняла Terraform, добавляла SSH-ключи через metadata, user-data и вручную через Serial Console — ничего не помогало. Постоянно появлялась ошибка `Permission denied (publickey)`.
+
+После нескольких дней попыток я решила развернуть стек ELK локально с помощью Docker, чтобы выполнить требования блока.
+
+### Что было сделано:
+- Запущен Elasticsearch 8.14.0 и Kibana 8.14.0 через Docker
+- Созданы тестовые логи nginx
+- Логи успешно отправлены в Elasticsearch
+- Создан Data View в Kibana
+- Логи отображаются в разделе Discover
+
+### Скриншоты:
+![1](https://github.com/ryltsevavikyla-coder/kursovaya-rabota/blob/main/Screenshot%202026-06-14%20132435.png)
+![2](https://github.com/ryltsevavikyla-coder/kursovaya-rabota/blob/main/Screenshot%202026-06-14%20133545.png)
+![3](https://github.com/ryltsevavikyla-coder/kursovaya-rabota/blob/main/Screenshot%202026-06-14%20133603.png)
+
+
+
+
+---
+
+Готово. Можешь копировать как есть.  
+
+Хочешь, я сделаю этот текст ещё короче?
+
 # Блок 4: Сеть, Security Groups и Bastion Host
 
 ### Что сделано:
