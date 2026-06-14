@@ -1,8 +1,29 @@
 # Курсовой проект на профессии «DevOps-инженер с нуля»
 
+В данном репозитории находится вся инфраструктура, разработанная для курсовой работы. 
+
+**Основные файлы:**
+
+- `variables.tf` — переменные проекта
+- `providers.tf` — настройка провайдера Yandex Cloud
+- `vpc.tf` — сеть и подсети
+- `security-groups.tf` — группы безопасности
+- `bastion.tf` — Bastion-хост
+- `web-servers.tf` — веб-сервера (nginx)
+- `load-balancer.tf` — Application Load Balancer
+- `monitoring.tf` — ВМ для мониторинга (Prometheus + Grafana)
+- `logs.tf` — ВМ для Elasticsearch + Kibana
+- `outputs.tf` — выходные данные (IP-адреса)
+
+Дополнительно:
+- `docker-compose.yml` — локальная версия ELK-стека (использовалась как workaround)
+
+---
+
+
 # Сайт
 
-## Блок 1 : Веб-сервера и Application Load Balancer
+# Блок 1 : Веб-сервера и Application Load Balancer
 
 ### Что было сделано:
 - Созданы две виртуальные машины (`web-server-1` и `web-server-2`) в приватной подсети в разных зонах доступности.
@@ -36,7 +57,16 @@
 ![Сайт Web Server 2](https://github.com/ryltsevavikyla-coder/kursovaya-rabota/blob/main/Screenshot%202026-06-11%20150110.png)
 
 
-## Блок 2: Мониторинг
+### Блок 1 + Блок 4 (Сайт + Сеть)
+- `vpc.tf`
+- `security-groups.tf`
+- `bastion.tf`
+- `logs.tf`
+- `load-balancer.tf`
+
+  ---
+
+# Блок 2: Мониторинг
 
 ### Что было сделано:
 
@@ -75,8 +105,12 @@
 - Nginx Exporter установлен и добавлен в Prometheus.
 - Метрики HTTP пока не собираются из-за отсутствия нагрузки на сайт.
 
+### Блок 2 (Мониторинг)
+- `monitoring.tf`
 
-## Блок 3: Сбор, хранение и анализ логов
+---
+  
+# Блок 3: Сбор, хранение и анализ логов
 
 При выполнении этого блока у меня возникли серьёзные проблемы. Я очень много раз пыталась настроить Filebeat на виртуальных машинах web-server-1 и web-server-2 в Yandex Cloud. Пересоздавала ВМ, меняла Terraform, добавляла SSH-ключи через metadata, user-data и вручную через Serial Console — ничего не помогало. Постоянно появлялась ошибка `Permission denied (publickey)`.
 
@@ -94,14 +128,13 @@
 ![2](https://github.com/ryltsevavikyla-coder/kursovaya-rabota/blob/main/Screenshot%202026-06-14%20133545.png)
 ![3](https://github.com/ryltsevavikyla-coder/kursovaya-rabota/blob/main/Screenshot%202026-06-14%20133603.png)
 
-
+### Блок 3 (Логи)
+- `logs.tf`
+- `docker-compose.yml` (локальная версия ELK)
 
 
 ---
 
-Готово. Можешь копировать как есть.  
-
-Хочешь, я сделаю этот текст ещё короче?
 
 # Блок 4: Сеть, Security Groups и Bastion Host
 
@@ -128,6 +161,12 @@ bastion_public_ip = "93.77.191.182"
 ```
 Bashssh ubuntu@93.77.191.182
 ```
+### Блок 1 + Блок 4 (Сайт + Сеть)
+- `vpc.tf`
+- `security-groups.tf`
+- `bastion.tf`
+- `logs.tf`
+- `load-balancer.tf`
 
 ## Блок 5: Резервное копирование
 
@@ -144,3 +183,6 @@ Bashssh ubuntu@93.77.191.182
 
 
 Расписание работает автоматически. Снимки создаются каждый день и хранятся 7 дней.
+
+### Блок 5 (Резервное копирование)
+Настроено через интерфейс Yandex Cloud — ежедневные снапшоты дисков всех ВМ с временем жизни 7 дней.
